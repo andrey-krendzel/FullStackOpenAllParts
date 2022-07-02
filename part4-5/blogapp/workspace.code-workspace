@@ -1,0 +1,35 @@
+{
+  "folders": [
+	{
+		"path": "../../mobile_programming_further"
+	},
+	{
+		"path": "../../docker"
+	},
+	{
+		"path": "../../exercises"
+	},
+	{
+		"path": "../../unicafe_exercises"
+	},
+	{
+		"path": "../../anecdotes"
+	},
+	{
+		"path": "../../course_exercises"
+	},
+	{
+		"path": "../../phonebook"
+	},
+	{
+		"path": ".."
+	},
+	{
+		"path": "../data_countries"
+	},
+	{
+		"path": "../../fluido_task/ebikes-lwc"
+	}
+],
+  "settings": {}
+}

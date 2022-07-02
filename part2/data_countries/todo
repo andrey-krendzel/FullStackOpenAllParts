@@ -1,0 +1,6 @@
+- list languages?
+- show country info when you press show button
+- weather data
+
+To activate env file:
+npm install dotenv --save
