@@ -57,6 +57,18 @@ const App = () => {
     }
   }
 
+  const handleLikeBlog = async (id) => {
+
+
+    const blogObject = blogs.find((blog) => blog.id === id)
+    const updatedBlogObject = { ...blogObject, likes: blogObject.likes +1 }
+
+    await blogService.update(id, updatedBlogObject)
+    const updatedBlogs = await blogService.getAll()
+    setBlogs(updatedBlogs)
+
+  }
+
   const handleAddBlog = async (event) => {
     event.preventDefault()
 
@@ -160,6 +172,7 @@ const App = () => {
       <div>
         username
         <input
+          id="username"
           type="text"
           value={username}
           name="Username"
@@ -169,13 +182,14 @@ const App = () => {
       <div>
         password
         <input
+          id="password"
           type="password"
           value={password}
           name="Password"
           onChange={({ target }) => setPassword(target.value)}
         />
       </div>
-      <button type="submit">login</button>
+      <button type="submit" id="login-button">login</button>
     </form>
   )
 
@@ -263,7 +277,7 @@ const App = () => {
             </th>
           </tr>
           {blogs.map((blog) => (
-            <Blog key={blog.id} blog={blog} handleDeleteBlog={handleDeleteBlog}/>
+            <Blog key={blog.id} blog={blog} handleDeleteBlog={handleDeleteBlog} handleLikeBlog={handleLikeBlog}/>
           ))}
         </table>
       </div>
