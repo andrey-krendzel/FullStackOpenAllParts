@@ -12,17 +12,14 @@ const Notification = () => {
   }
 
   const handleClick = () => {
-    if (notification === 'important'){
-      dispatch(notificationChange('non-important'))
-    } else {
-      dispatch(notificationChange('important'))
-    }
+    dispatch(notificationChange('default '))
+    
   }
 
   return (
     <div style={style}>
       {notification}
-      <button onClick={() => handleClick()}>Change to non-important</button>
+      <button onClick={() => handleClick()}>Default</button>
     </div>
   )
 }
