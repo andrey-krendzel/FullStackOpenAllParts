@@ -26,6 +26,8 @@ const Anecdote = ({ anecdote, handleClick }) => {
     
     )
 
+    
+
     return(
       <div>
         {anecdotes.map(anecdote =>
@@ -33,9 +35,10 @@ const Anecdote = ({ anecdote, handleClick }) => {
             key={anecdote.id}
             anecdote={anecdote}
             handleClick={() => {
+              
               dispatch(voteOn(anecdote.id))
-              dispatch(notificationChange(anecdote.content))
-              setTimeout(() => dispatch(notificationRemove()), 5000);
+              dispatch(notificationChange(anecdote.content, 5000))
+              
             }
             }
           />

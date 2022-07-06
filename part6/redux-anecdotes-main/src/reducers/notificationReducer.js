@@ -5,7 +5,7 @@ const notificationReducer = (state = initialState, action) => {
   switch(action.type) {
     
       case 'SET_NOTIFICATION':
-        return state = action.data
+        return action.data
 
       case 'REMOVE_NOTIFICATION':
         return state = ''
@@ -15,12 +15,16 @@ const notificationReducer = (state = initialState, action) => {
     }
   }
 
-  export const notificationChange = (message) => {
+  export const notificationChange = (message, time) => {
     
-    return {
-      type: 'SET_NOTIFICATION',
-      data: message
-    }
+     setTimeout(() => {
+       return {
+         type: 'SET_NOTIFICATION', 
+         data: {message}
+        }
+      }, time)
+      
+    
   }
 
   export const notificationRemove = (message) => {

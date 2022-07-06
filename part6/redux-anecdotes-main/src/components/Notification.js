@@ -5,6 +5,8 @@ const Notification = () => {
   const notification = useSelector(state => state.notifications)
   const dispatch = useDispatch()
 
+  console.log(notification.message)
+
   const style = {
     border: 'solid',
     padding: 10,
