@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { voteOn } from '../reducers/anecdoteReducer'
 import { notificationChange, notificationRemove } from '../reducers/notificationReducer'
 
+
 const Anecdote = ({ anecdote, handleClick }) => {
     return(
         <div key={anecdote.id}>
