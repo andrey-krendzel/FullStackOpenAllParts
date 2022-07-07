@@ -31,89 +31,34 @@
       "votes": 21
     },
     {
-      "anecdote": "test",
-      "votes": 3,
-      "id": "hXj2Lkf"
-    },
-    {
-      "anecdote": "test",
-      "votes": 1,
-      "id": "FhOYkz0"
-    },
-    {
-      "anecdote": "testsetsetset",
+      "content": "testsetes",
       "votes": 0,
-      "id": "cO8Jcv6"
+      "id": "FjU4hOk"
     },
     {
-      "anecdote": "test",
+      "content": "testsetes",
       "votes": 0,
-      "id": "YsFSobZ"
+      "id": "bMZWZ1O"
     },
     {
-      "anecdote": "test1",
+      "content": "new vote",
       "votes": 0,
-      "id": "MktCQ1s"
+      "id": "ZuXfllt"
     },
     {
-      "anecdote": "test",
+      "content": "new vote",
       "votes": 0,
-      "id": "wvO8Xya"
+      "id": "dZsjGEM"
     },
     {
-      "anecdote": "test",
+      "content": "new anecdote",
       "votes": 0,
-      "id": "-WQuJjg"
+      "id": "uBWV-8q"
     },
     {
-      "anecdote": "test",
+      "content": "new anecdote",
       "votes": 0,
-      "id": "uB9J_7V"
-    },
-    {
-      "anecdote": "test",
-      "votes": 0,
-      "id": "s4Opiiy"
-    },
-    {
-      "anecdote": "test",
-      "votes": 0,
-      "id": "mvNR_yR"
-    },
-    {
-      "anecdote": "test",
-      "votes": 0,
-      "id": "T1jAmTH"
-    },
-    {
-      "anecdote": "test",
-      "votes": 0,
-      "id": "Ka-jJVG"
-    },
-    {
-      "anecdote": "test",
-      "votes": 0,
-      "id": "Giy0O0m"
-    },
-    {
-      "anecdote": "teast stes t",
-      "votes": 0,
-      "id": "4w4I9Xj"
-    },
-    {
-      "anecdote": "teast stes t",
-      "votes": 0,
-      "id": "5rCWQrP"
-    },
-    {
-      "content": "test",
-      "votes": 0,
-      "id": "sGSysmO"
-    },
-    {
-      "content": "test",
-      "votes": 0,
-      "id": "aSlqqg_"
+      "id": "Y5goIO6"
     }
   ]
 }
