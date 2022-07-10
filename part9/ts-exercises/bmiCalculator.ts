@@ -20,6 +20,22 @@ const calculateBmi = (args: Array<string>): String => {
     }
 }
 
+const calculateBmiParameters = (height: number, weight: number): String => {
+    let bmiCalculation = weight/((height/100)*(height/100))
+
+    console.log(bmiCalculation)
+
+    if (bmiCalculation < 18.5) {
+        return 'Underweight, BMI: ' + bmiCalculation
+    } else if (bmiCalculation >= 18.5 && bmiCalculation < 24.9) {
+        return 'Healthy weight, BMI: ' + bmiCalculation
+    } else if (bmiCalculation >= 25 && bmiCalculation < 29.99) {
+        return 'Overweight, BMI: '+ bmiCalculation
+    } else {
+        return 'Obese, BMI: ' + bmiCalculation
+    }
+}
+
 try {
 console.log(calculateBmi(process.argv))
 } catch (error: unknown) {
@@ -29,3 +45,5 @@ console.log(calculateBmi(process.argv))
     }
     console.log(errorMessage);
 }
+
+export default calculateBmiParameters;
