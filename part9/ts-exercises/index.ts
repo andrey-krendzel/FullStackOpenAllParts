@@ -1,6 +1,9 @@
 import express = require('express');
 import calculateBmiParameters from './bmiCalculator';
+import calculateExercisesServer from './exerciseCalculator';
 const app = express();
+
+app.use(express.json());
 
 app.get('/ping', (_req, res) => {
     res.send('pong');
@@ -11,8 +14,8 @@ app.get('/ping', (_req, res) => {
   });
 
   app.get('/bmi', (req, res) => {
-    var height = Number(req.query.height);
-    var weight = Number(req.query.weight);
+    const height = Number(req.query.height);
+    const weight = Number(req.query.weight);
 
 
 
@@ -20,12 +23,27 @@ app.get('/ping', (_req, res) => {
 if (isNaN(weight) || isNaN(height) || weight === 0 || height === 0) {
   res
   .status(400)
-  .json({ message: "malformatted parameters" })
+  .json({ message: "malformatted parameters" });
 } else {
   res.send(calculateBmiParameters(height, weight));
 }
 }
 );
+
+app.post('/exercises', (req, res) => {
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment 
+  const { daily_exercises, target } = req.body;
+
+  console.log(req.body);
+
+  
+
+
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+  const result = calculateExercisesServer(target, daily_exercises);
+
+  res.send(result);
+});
   
   const PORT = 3003;
   
