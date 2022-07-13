@@ -34,15 +34,31 @@ app.post('/exercises', (req, res) => {
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment 
   const { daily_exercises, target } = req.body;
 
-  console.log(req.body);
+  if (!daily_exercises || !target){
+    return res.status(400).send({ error: 'parameters missing'});
+  }
 
-  
+  if (isNaN(Number(target))){
+    return res.status(400).send({ error: 'malformatted parameters'});
+  }
+
+
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+  for (let i = 0; i < daily_exercises.length; i++) {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+    if (isNaN(Number(daily_exercises[i]))) {
+      return res.status(400).send({ error: 'malformatted parameters'});
+    }
+}
+
+
+
 
 
   // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
   const result = calculateExercisesServer(target, daily_exercises);
 
-  res.send(result);
+  return res.status(200).send(result);
 });
   
   const PORT = 3003;
