@@ -26,6 +26,13 @@
 
       }
 
+      export enum Gender {
+          Male = 'male',
+          Female = 'female',
+      }
+
       export type NonLatinDiagnose = Omit<Diagnose, 'latin'>;
 
       export type NonSSNPatient = Omit<Patient, 'ssn'>;
+
+      export type NewPatientEntry = Omit<Patient, 'id'>;
