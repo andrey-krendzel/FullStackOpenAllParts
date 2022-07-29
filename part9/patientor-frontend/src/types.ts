@@ -1,3 +1,5 @@
+import { State } from "./state";
+
 export interface Diagnosis {
   code: string;
   name: string;
@@ -18,3 +20,4 @@ export interface Patient {
   ssn?: string;
   dateOfBirth?: string;
 }
+

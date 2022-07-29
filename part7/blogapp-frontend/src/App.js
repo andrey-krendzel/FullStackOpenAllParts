@@ -9,7 +9,8 @@ import BlogUpdateForm from './components/BlogUpdateForm'
 import Togglable from './components/Togglable'
 import './App.css'
 import { notificationChange, notificationRemove } from './reducers/notificationReducer'
-import { initializeBlogs, createBlog } from './reducers/blogReducer'
+import { setUser } from './reducers/userReducer'
+import { initializeBlogs, createBlog, deleteBlog, likeBlog } from './reducers/blogReducer'
 import reducer from './reducers/blogReducer'
 
 const App = () => {
@@ -19,13 +20,16 @@ const App = () => {
   const [blogsUpdateFormVisible, setBlogsUpdateFormVisible] = useState(false)
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
-  const [user, setUser] = useState(null)
+  //const [user, setUser] = useState(null)
   // const [errorMessage, setErrorMessage] = useState('')
   const [blogTitle, setBlogTitle] = useState('')
   const [blogAuthor, setBlogAuthor] = useState('')
   const [blogUrl, setBlogUrl] = useState('')
   const [blogLikes, setBlogLikes] = useState(0)
   const dispatch = useDispatch()
+
+  const user = useSelector(state => state)
+  console.log('user: ', user)
 
   useEffect(() => {
     dispatch(initializeBlogs())
@@ -65,15 +69,9 @@ const App = () => {
   }
 
   const handleLikeBlog = async (id) => {
-
-
     const blogObject = blogs.find((blog) => blog.id === id)
     const updatedBlogObject = { ...blogObject, likes: blogObject.likes +1 }
-
-    await blogService.update(id, updatedBlogObject)
-    const updatedBlogs = await blogService.getAll()
-    reducer.setBlogs(updatedBlogs)
-
+    dispatch(likeBlog(updatedBlogObject, id))
   }
 
   const handleAddBlog = async (event) => {
@@ -121,7 +119,7 @@ const App = () => {
 
       console.log('id', id)
 
-      await blogService.update(id, blogObject)
+      await blogService.updateBlog(id, blogObject)
       reducer.setBlogs(blogs.concat(blogObject))
       setBlogTitle('')
       setBlogAuthor('')
@@ -138,10 +136,9 @@ const App = () => {
 
   const handleDeleteBlog = async (id) => {
 
-    console.log('id', id)
 
-    await blogService.deleteBlog(id)
-    reducer.setBlogs(blogs.filter(blog => blog.id !== id))
+    //await blogService.deleteBlog(id)
+    dispatch(deleteBlog(id))
     //   setBlogTitle('')
     //   setBlogAuthor('')
     //   setBlogUrl('')
@@ -282,7 +279,8 @@ const App = () => {
         loginForm()
       ) : (
         <div>
-          {blogsList()} <br /> {blogsAdd()} <br /> {blogsUpdate()}
+          {blogsList()} <br /> {blogsAdd()} <br />
+          {blogsUpdate()}
         </div>
       )}
       <br/>

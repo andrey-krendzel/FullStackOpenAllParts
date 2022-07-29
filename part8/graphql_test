@@ -1,0 +1,19 @@
+query FetchBlogsQuery {
+    user(username: "mlukkai") {
+        followedUsers {
+            blogs {
+                title
+            }
+        }
+    }
+}
+
+query {
+    findPerson(name: "Arto Hellas") {
+        phone
+        city
+        street
+        id
+    }
+}
+

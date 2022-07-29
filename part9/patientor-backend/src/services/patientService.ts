@@ -32,8 +32,17 @@ const addEntry = ( entry: NewPatientEntry ): Patient => {
 
   };
 
+  const findById = (id: number): NonSSNPatient | undefined => {
+    const entry = patients.find(p => p.id === id);
+    return entry;
+
+  };
+
+
+
   export default {
     getEntries,
     addEntry,
-    getNonSSNEntries
+    getNonSSNEntries,
+    findById
   };

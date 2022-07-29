@@ -7,9 +7,12 @@ export type State = {
   patients: { [id: string]: Patient };
 };
 
+
 const initialState: State = {
   patients: {}
 };
+
+
 
 export const StateContext = createContext<[State, React.Dispatch<Action>]>([
   initialState,

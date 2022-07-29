@@ -10,6 +10,10 @@
         "occupation": "Technician"
         */
 
+        // eslint-disable-next-line @typescript-eslint/no-empty-interface
+    export interface Entry {
+    }
+
       export interface Diagnose {
         code: string;
         name: string;
@@ -23,6 +27,7 @@
           ssn: string;
           gender: string;
           occupation: string;
+          entries: Entry[]
 
       }
 
@@ -33,6 +38,6 @@
 
       export type NonLatinDiagnose = Omit<Diagnose, 'latin'>;
 
-      export type NonSSNPatient = Omit<Patient, 'ssn'>;
+      export type NonSSNPatient = Omit<Patient, 'ssn' | 'entries'>;
 
-      export type NewPatientEntry = Omit<Patient, 'id'>;
+      export type NewPatientEntry = Omit<Patient, 'id' | 'entries'>;
