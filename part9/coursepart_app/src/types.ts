@@ -47,7 +47,7 @@ export interface CourseSubmissionPart extends CoursePartBase {
   exerciseSubmissionLink: string;
 }
 
-type CoursePart = CoursePartOne | CourseNormalPart | CourseProjectPart | CourseSubmissionPart;
+type CoursePart = CourseNormalPart | CourseProjectPart | CourseSubmissionPart;
 
 export interface HeaderProps {
     courseName: string;

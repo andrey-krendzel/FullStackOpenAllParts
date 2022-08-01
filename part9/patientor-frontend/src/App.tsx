@@ -4,10 +4,11 @@ import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
 import { Button, Divider, Container } from "@material-ui/core";
 
 import { apiBaseUrl } from "./constants";
-import { useStateValue } from "./state";
+import { useStateValue, setPatientList } from "./state";
 import { Patient } from "./types";
 
 import PatientListPage from "./PatientListPage";
+import PatientDetailsPage from "./PatientDetailsPage";
 import { Typography } from "@material-ui/core";
 
 const App = () => {
@@ -20,7 +21,7 @@ const App = () => {
         const { data: patientListFromApi } = await axios.get<Patient[]>(
           `${apiBaseUrl}/patients`
         );
-        dispatch({ type: "SET_PATIENT_LIST", payload: patientListFromApi });
+        dispatch(setPatientList(patientListFromApi));
       } catch (e) {
         console.error(e);
       }
@@ -28,7 +29,7 @@ const App = () => {
     void fetchPatientList();
   }, [dispatch]);
 
-
+  //const { id } = useParams<{ id: string }>();
 
   return (
     <div className="App">
@@ -43,6 +44,7 @@ const App = () => {
           <Divider hidden />
           <Routes>
             <Route path="/" element={<PatientListPage />} />
+            <Route path="/api/patients/:id" element={<PatientDetailsPage />} /> 
           </Routes>
         </Container>
       </Router>
