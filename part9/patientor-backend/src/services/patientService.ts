@@ -7,6 +7,8 @@ const getEntries = (): Patient[] => {
     return patients;
 };
 
+
+
 const getNonSSNEntries = (): NonSSNPatient[] => {
   return patients.map(({ id, name, dateOfBirth, gender, occupation }) => ({
     id,

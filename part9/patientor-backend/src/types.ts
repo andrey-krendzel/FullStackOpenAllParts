@@ -27,7 +27,7 @@
           ssn: string;
           gender: string;
           occupation: string;
-          entries: Entry[];
+          entries: HospitalEntry[];
 
       }
 
@@ -35,6 +35,20 @@
           Male = 'male',
           Female = 'female',
           Other = 'other'
+      }
+
+      export interface HospitalEntry {
+       
+        id: string;
+        date: string;
+        type: 'hospital';
+        specialist: string;
+        diagnoseCodes?: Array<Diagnose['code']>;
+        description: string;
+        discharge: {
+          date: string;
+          criteria: string;
+        };
       }
 
       export type NonLatinDiagnose = Omit<Diagnose, 'latin'>;

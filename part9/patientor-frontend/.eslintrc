@@ -33,6 +33,7 @@
   "parserOptions": {
     "project": "tsconfig.json",
     "tsconfigRootDir": "__dirname",
+    //gotta change it periodically to patientor-frontend
     "sourceType": "module"
   }
 }

@@ -1,5 +1,5 @@
 import { State } from "./state";
-import { Patient, Diagnosis } from "../types";
+import { Patient, Diagnose } from "../types";
 
 export type Action =
   | {
@@ -12,7 +12,7 @@ export type Action =
     }
   | {
       type: "SET_DIAGNOSES_LIST";
-      payload: Diagnosis[];
+      payload: Diagnose[];
   };
 
 
