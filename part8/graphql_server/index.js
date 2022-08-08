@@ -4,6 +4,10 @@ const Person = require('./models/person')
 
 const MONGODB_URI = `mongodb+srv://fullstack:${MONGO_PWD}@cluster0.nd6eu.mongodb.net/?retryWrites=true&w=majority`
 
+const jwt = require('jsonwebtoken')
+
+const JWT_SECRET = 'SECRET_KEY'
+
 console.log('connecting to', MONGODB_URI)
 
 mongoose.connect(MONGODB_URI)
@@ -20,6 +24,17 @@ mongoose.connect(MONGODB_URI)
   
   const typeDefs = gql`
   type Address {  street: String!  city: String! }
+
+
+  type User {
+  username: String!
+  friends: [Person!]!
+  id: ID!
+  }
+
+  type Token {
+    value: String!
+  }
 
   type Person {
     name: String!
@@ -52,6 +67,13 @@ mongoose.connect(MONGODB_URI)
       name: String!
       phone: String!
     ): Person
+    createUser(
+      username: String!
+    ): User
+    login(
+      username: String!
+      password: String!
+    ): Token
   }
   `
 
@@ -76,14 +98,42 @@ mongoose.connect(MONGODB_URI)
         }
       },
       Mutation: {
+        createUser: async (root, args) => {
+          const user = new User({ username: args.username })
+
+          return user.save()
+            .catch(error => {
+              throw new UserInputError(error.message, {
+                invalidArgs: args,
+              })
+            })
+        },
+        
         addPerson: async (root, args) => {
           const person = new Person({ ...args })
-          return person.save()
+
+          try {
+            await person.save()
+          } catch (error){
+            throw new UserInputError(error.message, {
+              invalidArgs: args,
+            })
+          }
+          return person
         },
+
         editNumber: async (root, args) => {
           const person = await Person.findOne({ name: args.name })
           person.phone = args.phone
-          return person.save()
+          
+          try {
+            await person.save()
+          } catch (error) {
+            throw new UserInputError(error.message, {
+              invalidArgs: args,
+            })
+          }
+          return person
           }
       }
   }

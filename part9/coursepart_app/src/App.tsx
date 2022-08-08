@@ -2,9 +2,9 @@ import React from 'react';
 import Header from './components/Header'
 import Content from './components/Content'
 import Total from './components/Total'
-import { CoursePartOne, CourseNormalPart, CourseProjectPart, CourseSubmissionPart } from './types'
+import { CourseNormalPart, CourseProjectPart, CourseSubmissionPart, CourseSpecialPart } from './types'
 
-type CoursePart = CoursePartOne | CourseNormalPart | CourseProjectPart | CourseSubmissionPart;
+type CoursePart = CourseNormalPart | CourseProjectPart | CourseSubmissionPart | CourseSpecialPart;
 
 
 const App: React.FC = () => {
