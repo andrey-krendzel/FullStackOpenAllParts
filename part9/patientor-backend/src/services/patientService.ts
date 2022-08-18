@@ -26,7 +26,6 @@ const addEntry = ( entry: NewPatientEntry ): Patient => {
   const newPatientEntry = {
     id: id,
     ...entry,
-    entries: []
   };
 
   patients.push(newPatientEntry);
@@ -35,7 +34,7 @@ const addEntry = ( entry: NewPatientEntry ): Patient => {
 
   };
 
-  const findById = (id: string): NonSSNPatient | undefined => {
+  const findById = (id: string): Patient | undefined => {
     const entry = patients.find(p => p.id === id);
     return entry;
 

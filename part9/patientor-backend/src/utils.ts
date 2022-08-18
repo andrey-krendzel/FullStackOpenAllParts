@@ -1,4 +1,4 @@
-import { NewPatientEntry, Gender } from './types';
+import { NewPatientEntry, Gender, Entry } from './types';
 
 
       /* "id": "d27736ec-f723-11e9-8f0b-362b9e155667",
@@ -27,6 +27,7 @@ const parseName = (name: unknown): string => {
     }
     return name;
 };
+
 
 const parseDate = (date: unknown): string => {
     if (!date || !isString(date) || !isDate(date)){
@@ -59,15 +60,25 @@ const parseOccupation = (occupation: unknown): string => {
     return occupation;
 };
 
-type Fields = { name: unknown, dateOfBirth: unknown, ssn: unknown, gender: unknown, occupation: unknown };
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const parseEntries = (entries: any): Entry[] => {
+    if (!entries) {
+      throw new Error(`Incorrect or missing entries: ${entries}`);
+    }
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+    return entries;
+  };
 
-const toNewPatientEntry = ({ name, dateOfBirth, ssn, gender, occupation }: Fields): NewPatientEntry => {
+type Fields = { name: unknown, dateOfBirth: unknown, ssn: unknown, gender: unknown, occupation: unknown, entries:unknown };
+
+const toNewPatientEntry = ({ name, dateOfBirth, ssn, gender, occupation, entries }: Fields): NewPatientEntry => {
     const newEntry: NewPatientEntry = {
         name: parseName(name),
         dateOfBirth: parseDate(dateOfBirth),
         ssn: parseSSN(ssn),
         gender: parseGender(gender),
-        occupation: parseOccupation(occupation)
+        occupation: parseOccupation(occupation),
+        entries: parseEntries(entries)
     };
 
     return newEntry;

@@ -117,10 +117,10 @@ export const DiagnosisSelection = ({
     setFieldValue(field, selectedDiagnoses);
   };
 
-  const stateOptions = diagnoses.map((diagnosis) => ({
-    key: diagnosis.code,
-    text: `${diagnosis.name} (${diagnosis.code})`,
-    value: diagnosis.code,
+  const stateOptions = diagnoses.map((diagnose) => ({
+    key: diagnose.code,
+    text: `${diagnose.name} (${diagnose.code})`,
+    value: diagnose.code,
   }));
 
   return (

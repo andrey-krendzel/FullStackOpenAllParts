@@ -32,8 +32,8 @@
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "project": "tsconfig.json",
-    "tsconfigRootDir": "__dirname",
-    //gotta change it periodically to patientor-frontend
+    "tsconfigRootDir": "patientor-frontend",
+    //gotta change it periodically to patientor-frontend or __dirname
     "sourceType": "module"
   }
 }
